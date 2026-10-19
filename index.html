@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoanFlow | Smart Lending & Fraud Detection</title>
+<style>
+:root{--bg:#f4f7fb;--panel:#fff;--ink:#172033;--muted:#65718a;--line:#e2e8f0;--navy:#152744;--blue:#315efb;--teal:#13a89e;--red:#d9485f;--amber:#c98512;--green:#16865c;--shadow:0 8px 28px rgba(26,42,72,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:11px 15px;font-weight:700;transition:.15s}button:hover{transform:translateY(-1px)}.primary{background:var(--blue);color:white}.secondary{background:#edf2ff;color:#2549d8}.darkbtn{background:var(--navy);color:white}.dangerbtn{background:#fff0f2;color:#b4233c}.app{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--navy);color:#fff;padding:26px 16px;display:flex;flex-direction:column;gap:28px}.brand{display:flex;gap:11px;align-items:center;padding:0 8px}.brandmark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#5d7cff,#20c7bd);display:grid;place-items:center;font-size:21px}.brand strong{font-size:18px;letter-spacing:-.4px}.brand small{display:block;color:#aab8d1;font-size:11px;margin-top:2px}.navlabel{font-size:10px;color:#8fa2c2;letter-spacing:1.4px;padding:0 12px;margin-bottom:7px}.nav{display:grid;gap:6px}.nav button{color:#c5d1e5;background:transparent;text-align:left;display:flex;gap:12px;align-items:center;padding:12px}.nav button.active,.nav button:hover{background:#263b5d;color:white}.nav .ico{width:20px;text-align:center}.sidebar-foot{margin-top:auto;border-top:1px solid #344866;padding:16px 9px;color:#b4c2d8;font-size:12px;line-height:1.6}.main{min-width:0;padding:28px clamp(16px,3vw,38px) 40px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:27px}.eyebrow{font-size:11px;color:var(--blue);font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.topbar h1{font-size:28px;letter-spacing:-.9px;margin:5px 0 0}.user{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}.avatar{width:37px;height:37px;border-radius:50%;background:#dce6ff;color:#2449d6;display:grid;place-items:center;font-weight:800}.view{display:none}.view.active{display:block}.grid{display:grid;gap:16px}.metrics{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:19px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:var(--shadow);min-width:0}.metric-label{color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:8px}.metric-value{font-size:29px;letter-spacing:-1px;font-weight:800;margin:12px 0 6px}.metric-foot{font-size:11px;color:var(--muted)}.metric-icon{width:34px;height:34px;border-radius:10px;background:#edf2ff;display:grid;place-items:center;font-size:17px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 13px}.section-head h2{font-size:17px;margin:0;letter-spacing:-.3px}.section-head p{font-size:12px;color:var(--muted);margin:5px 0 0}.split{grid-template-columns:minmax(0,1.4fr) minmax(260px,.8fr)}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}th{text-align:left;color:var(--muted);font-size:10px;letter-spacing:.7px;text-transform:uppercase;padding:12px 10px;border-bottom:1px solid var(--line)}td{padding:14px 10px;border-bottom:1px solid #edf0f5}tr:last-child td{border-bottom:0}.pill{display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:800}.pill.green{background:#e5f7ef;color:#11724e}.pill.amber{background:#fff4d9;color:#95610b}.pill.red{background:#ffe9ed;color:#b4233c}.pill.blue{background:#e9efff;color:#2e50cb}.activity{display:grid;gap:15px}.activity-item{display:flex;gap:11px;align-items:flex-start}.activity-icon{width:30px;height:30px;border-radius:10px;background:#f0f3fa;display:grid;place-items:center;flex-shrink:0}.activity-item strong{font-size:12px;display:block;margin:1px 0 4px}.activity-item p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}.form-layout{grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr);align-items:start}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px}.field label{font-size:12px;font-weight:700;color:#3a465b}.field input,.field select{width:100%;padding:12px;border:1px solid #d9e1ed;border-radius:10px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus{border-color:var(--blue);box-shadow:0 0 0 3px #315efb19}.field small{color:var(--muted);font-size:10px}.full{grid-column:1/-1}.form-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.result{border-radius:13px;background:#f5f7fc;padding:16px;margin-top:15px;display:none}.result.show{display:block}.result h3{margin:0 0 8px;font-size:17px}.result p{font-size:12px;line-height:1.6;color:var(--muted);margin:6px 0}.score{font-size:30px;font-weight:850}.scorebar{height:8px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin:9px 0 13px}.scorebar span{height:100%;display:block;border-radius:99px;background:var(--teal);width:0;transition:width .4s}.risklist{display:grid;gap:9px;margin-top:12px}.riskrow{display:flex;justify-content:space-between;gap:10px;font-size:12px;padding-bottom:9px;border-bottom:1px solid var(--line)}.riskrow:last-child{border:0}.banner{background:linear-gradient(110deg,#152744,#244a83);color:#fff;border-radius:16px;padding:22px;display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:18px}.banner h2{margin:5px 0 8px;font-size:21px}.banner p{margin:0;color:#c8d7ef;font-size:12px;line-height:1.6;max-width:620px}.banner .tag{font-size:10px;color:#c9d8f1;border:1px solid #58729b;border-radius:99px;padding:7px 10px;white-space:nowrap}.transaction-layout{grid-template-columns:minmax(0,1.4fr) minmax(250px,.7fr)}.transaction-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.risk-score{font-size:36px;font-weight:850;letter-spacing:-1px}.risk-meter{height:10px;background:#e6ebf2;border-radius:99px;margin:12px 0;overflow:hidden}.risk-meter span{display:block;height:100%;width:0;background:var(--teal);transition:width .35s}.signal{display:flex;gap:9px;align-items:flex-start;padding:11px;border:1px solid var(--line);border-radius:11px;margin-top:9px;font-size:12px;line-height:1.5}.signal b{display:block;margin-bottom:2px}.pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}.stage{border:1px solid var(--line);border-radius:12px;padding:14px 10px;text-align:center;background:#fff}.stage .stageico{font-size:22px}.stage strong{display:block;font-size:11px;margin:8px 0 4px}.stage small{font-size:10px;color:var(--muted)}.stage.done{border-color:#8bd9b7;background:#f0fbf5}.stage.fail{border-color:#f1a1ad;background:#fff2f4}.stage.running{border-color:#8ea6ff;background:#f1f4ff}.logs{background:#111b2d;color:#b9c8e3;border-radius:12px;padding:15px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;line-height:1.8;min-height:115px;white-space:pre-wrap;overflow:auto}.logok{color:#72e1ad}.logwarn{color:#ffd27b}.logbad{color:#ff8a9a}.empty{padding:28px;text-align:center;color:var(--muted);font-size:12px}.toast{position:fixed;right:20px;bottom:20px;background:#152744;color:white;padding:13px 17px;border-radius:12px;box-shadow:var(--shadow);font-size:12px;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s;z-index:10}.toast.show{opacity:1;transform:translateY(0)}.disclaimer{font-size:10px;color:var(--muted);line-height:1.6;margin-top:18px}.tagline{display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;background:#2fcb8b;border-radius:50%}
+@media(max-width:950px){.app{grid-template-columns:78px minmax(0,1fr)}.sidebar{padding:22px 9px}.brand{justify-content:center;padding:0}.brandtext,.navlabel,.navtext,.sidebar-foot{display:none}.nav button{justify-content:center;padding:13px 5px}.nav .ico{font-size:18px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.split,.form-layout,.transaction-layout{grid-template-columns:1fr}.pipeline{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.main{padding:19px 12px}.topbar h1{font-size:22px}.user .userlabel{display:none}.metrics{gap:9px}.card{padding:14px}.metric-value{font-size:24px}.banner{padding:17px;align-items:flex-start}.banner .tag{display:none}.form-grid,.transaction-form{grid-template-columns:1fr}.pipeline{grid-template-columns:repeat(2,1fr)}.section-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">↗</div><div class="brandtext"><strong>LoanFlow</strong><small>SMART LENDING PLATFORM</small></div></div>
+  <div><div class="navlabel">WORKSPACE</div><nav class="nav">
+    <button class="active" data-view="overview"><span class="ico">▦</span><span class="navtext">Overview</span></button>
+    <button data-view="applications"><span class="ico">▤</span><span class="navtext">Loan applications</span></button>
+    <button data-view="fraud"><span class="ico">◈</span><span class="navtext">Fraud detection</span></button>
+    <button data-view="devops"><span class="ico">⚙</span><span class="navtext">DevOps pipeline</span></button>
+  </nav></div>
+  <div class="sidebar-foot"><div class="tagline"><span class="dot"></span> Demo environment</div><div style="margin-top:8px">Synthetic data only<br>Prototype v1.0.0</div></div>
+</aside>
+<main class="main">
+  <header class="topbar"><div><div class="eyebrow">FINTECH OPERATIONS</div><h1 id="pageTitle">Overview</h1></div><div class="user"><div class="avatar">LO</div><div class="userlabel"><strong style="color:var(--ink)">Loan Officer</strong><div style="font-size:11px;margin-top:3px">Demo workspace</div></div></div></header>
+
+  <section class="view active" id="overview">
+    <div class="banner"><div><div class="eyebrow" style="color:#9fb8ff">SMART LENDING + RISK ENGINE</div><h2>Make lending workflows faster and safer.</h2><p>Validate loan applications, flag unusual patterns, and see how a CI/CD pipeline can ship changes safely. Explore the demo using sample data—no real bank connection is used.</p></div><div class="tag">● SYSTEM SIMULATION</div></div>
+    <div class="grid metrics">
+      <div class="card"><div class="metric-label">Applications assessed <span class="metric-icon">▤</span></div><div class="metric-value" id="mApps">128</div><div class="metric-foot">Includes seeded demo applications</div></div>
+      <div class="card"><div class="metric-label">Flagged for review <span class="metric-icon" style="background:#fff1df">⚑</span></div><div class="metric-value" id="mFlags">9</div><div class="metric-foot">Not automatic fraud conclusions</div></div>
+      <div class="card"><div class="metric-label">Average processing <span class="metric-icon" style="background:#e5faf5">◷</span></div><div class="metric-value">2.4 min</div><div class="metric-foot">Illustrative demo metric</div></div>
+      <div class="card"><div class="metric-label">Pipeline status <span class="metric-icon" style="background:#e9efff">⌁</span></div><div class="metric-value" style="font-size:22px;color:var(--green)">Healthy</div><div class="metric-foot">Last simulated build passed</div></div>
+    </div>
+    <div class="grid split">
+      <div class="card"><div class="section-head"><div><h2>Recent applications</h2><p>Example cases from the demo dataset</p></div><button class="secondary" onclick="showView('applications')">Open applications →</button></div><div class="table-wrap"><table><thead><tr><th>Applicant</th><th>Loan amount</th><th>Risk</th><th>Status</th></tr></thead><tbody id="overviewRows"></tbody></table></div></div>
+      <div class="card"><div class="section-head"><div><h2>System activity</h2><p>Latest workflow events</p></div></div><div class="activity" id="activity"></div></div>
+    </div>
+    <p class="disclaimer">Important: This is a learning prototype. All names, metrics and cases are fictional. It does not access credit bureaus, verify identity, or make legally binding lending decisions.</p>
+  </section>
+
+  <section class="view" id="applications">
+    <div class="section-head"><div><h2>Loan applications</h2><p>Submit a sample application to run the explainable eligibility and risk checks.</p></div><button class="secondary" onclick="resetLoanForm()">↺ Reset form</button></div>
+    <div class="grid form-layout">
+      <div class="card"><form id="loanForm">
+        <div class="form-grid">
+          <div class="field"><label for="applicant">Applicant name</label><input id="applicant" required placeholder="e.g. Asha Mehta" value="Asha Mehta"></div>
+          <div class="field"><label for="loanType">Loan type</label><select id="loanType"><option>Personal loan</option><option>Education loan</option><option>Home loan</option><option>Vehicle loan</option></select></div>
+          <div class="field"><label for="income">Monthly income (₹)</label><input id="income" type="number" min="0" required value="65000"></div>
+          <div class="field"><label for="loanAmount">Requested loan (₹)</label><input id="loanAmount" type="number" min="1" required value="300000"></div>
+          <div class="field"><label for="emi">Existing monthly EMI (₹)</label><input id="emi" type="number" min="0" required value="8000"></div>
+          <div class="field"><label for="employment">Employment type</label><select id="employment"><option value="salaried">Salaried</option><option value="self-employed">Self-employed</option><option value="student">Student / no regular income</option></select></div>
+          <div class="field"><label for="months">Employment / income history (months)</label><input id="months" type="number" min="0" value="30" required></div>
+          <div class="field"><label for="credit">Illustrative credit score (300–900)</label><input id="credit" type="number" min="300" max="900" value="740" required></div>
+          <div class="field"><label for="identity">Identity/document check</label><select id="identity"><option value="match">Details consistent</option><option value="mismatch">Mismatch detected</option><option value="missing">Document missing</option></select></div>
+          <div class="field"><label for="duplicate">Duplicate application check</label><select id="duplicate"><option value="no">No duplicate found</option><option value="yes">Possible duplicate found</option></select></div>
+          <div class="field full"><small>All rules and thresholds are illustrative and configurable. Do not enter real personal or financial information.</small></div>
+        </div>
+        <div class="form-actions"><button class="primary" type="submit">Assess application →</button><button class="darkbtn" type="button" onclick="seedLoanExample()">Load review case</button></div>
+      </form><div class="result" id="loanResult" aria-live="polite"></div></div>
+      <div class="card"><div class="section-head"><div><h2>How the rules work</h2><p>Transparent checks used by this demo</p></div></div>
+        <div class="risklist">
+          <div class="riskrow"><span>Debt-to-income (EMI / income)</span><strong>Target ≤ 40%</strong></div>
+          <div class="riskrow"><span>Illustrative credit score</span><strong>Target ≥ 650</strong></div>
+          <div class="riskrow"><span>Income history</span><strong>Target ≥ 6 months</strong></div>
+          <div class="riskrow"><span>Document consistency</span><strong>No mismatch</strong></div>
+          <div class="riskrow"><span>Duplicate application</span><strong>Manual review</strong></div>
+        </div>
+        <div style="background:#fff4d9;color:#81580b;padding:13px;border-radius:11px;font-size:11px;line-height:1.6;margin-top:18px"><strong>Human-in-the-loop:</strong> The system recommends a next step. A real lender must validate documents, apply approved credit policy, meet legal requirements, and make the final decision.</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px"><div class="section-head"><div><h2>Application register</h2><p>New assessments appear here during your demo.</p></div></div><div class="table-wrap"><table><thead><tr><th>Reference</th><th>Applicant</th><th>Type</th><th>Amount</th><th>Risk score</th><th>Recommendation</th></tr></thead><tbody id="applicationRows"></tbody></table></div></div>
+  </section>
+
+  <section class="view" id="fraud">
+    <div class="section-head"><div><h2>Transaction fraud detection</h2><p>Try normal and suspicious transactions to see risk signals.</p></div><button class="secondary" onclick="loadFraudExample()">Load suspicious example</button></div>
+    <div class="grid transaction-layout">
+      <div class="card"><form id="transactionForm"><div class="transaction-form">
+        <div class="field"><label for="txAmount">Transaction amount (₹)</label><input id="txAmount" type="number" min="1" value="1800" required></div>
+        <div class="field"><label for="txHour">Hour of transaction (0–23)</label><input id="txHour" type="number" min="0" max="23" value="14" required></div>
+        <div class="field"><label for="txCount">Transactions in last 10 minutes</label><input id="txCount" type="number" min="1" value="1" required></div>
+        <div class="field"><label for="txDevice">Device / location pattern</label><select id="txDevice"><option value="known">Known device and usual location</option><option value="new">New device</option><option value="far">Unusual distant location</option></select></div>
+        <div class="field"><label for="txMerchant">Merchant category</label><select id="txMerchant"><option value="usual">Usual merchant</option><option value="new">First-time merchant</option><option value="high">High-risk / unusual category</option></select></div>
+        <div class="field"><label for="txCard">Authentication</label><select id="txCard"><option value="ok">Successful strong authentication</option><option value="failed">Repeated failed attempts</option><option value="none">Authentication unavailable</option></select></div>
+      </div><div class="form-actions"><button class="primary" type="submit">Analyze transaction →</button><button class="secondary" type="button" onclick="resetTx()">Reset</button></div></form></div>
+      <div class="card"><div class="section-head"><div><h2>Risk assessment</h2><p>Rule-based demo score (0–100)</p></div><span id="txBadge" class="pill blue">Awaiting analysis</span></div><div class="risk-score" id="txScore">—</div><div class="risk-meter"><span id="txMeter"></span></div><div style="font-size:11px;color:var(--muted)" id="txSummary">Submit a transaction to see risk signals.</div><div id="txSignals"></div></div>
+    </div>
+    <div class="card" style="margin-top:18px"><div class="section-head"><div><h2>Transaction review queue</h2><p>Each flagged case should be investigated; a score is not proof of fraud.</p></div></div><div class="table-wrap"><table><thead><tr><th>Reference</th><th>Amount</th><th>Risk score</th><th>Signals</th><th>Action</th></tr></thead><tbody id="txRows"><tr><td colspan="5" class="empty">No transactions analyzed yet. Try a sample above.</td></tr></tbody></table></div></div>
+    <p class="disclaimer">This simulation does not connect to a payment network or block real transactions. A production system would require secure event ingestion, calibrated models, privacy controls, human review, and carefully tested response policies.</p>
+  </section>
+
+  <section class="view" id="devops">
+    <div class="banner"><div><div class="eyebrow" style="color:#9fb8ff">DELIVERY AUTOMATION</div><h2>Ship changes with confidence.</h2><p>Run a simulated CI/CD pipeline to demonstrate source checks, automated tests, security scanning, container build, and deployment. This is an in-browser simulation—not a live GitHub Actions or cloud deployment.</p></div><div class="tag">CI / CD</div></div>
+    <div class="card"><div class="section-head"><div><h2>Deployment pipeline</h2><p>Each stage must pass before the demo deployment is marked healthy.</p></div><button class="primary" id="runPipeline" onclick="runPipeline()">▶ Run pipeline</button></div>
+      <div class="pipeline" id="pipelineStages">
+        <div class="stage" id="stage0"><div class="stageico">⌘</div><strong>Source checkout</strong><small>Git revision</small></div>
+        <div class="stage" id="stage1"><div class="stageico">✓</div><strong>Automated tests</strong><small>Unit + API tests</small></div>
+        <div class="stage" id="stage2"><div class="stageico">⛨</div><strong>Security scan</strong><small>Dependencies / image</small></div>
+        <div class="stage" id="stage3"><div class="stageico">▣</div><strong>Build image</strong><small>Docker build</small></div>
+        <div class="stage" id="stage4"><div class="stageico">↗</div><strong>Deploy + health</strong><small>Smoke test</small></div>
+      </div>
+      <div class="section-head" style="margin-top:25px"><div><h2>Pipeline logs</h2><p>Simulated build output</p></div><button class="secondary" onclick="clearLogs()">Clear logs</button></div><div class="logs" id="logs">[system] Ready. Click “Run pipeline” to begin a demo run.</div>
+    </div>
+    <div class="grid metrics" style="margin-top:17px">
+      <div class="card"><div class="metric-label">Deployment strategy</div><div class="metric-value" style="font-size:20px">Rolling</div><div class="metric-foot">Illustrative configuration</div></div>
+      <div class="card"><div class="metric-label">Health check</div><div class="metric-value" style="font-size:20px">/health</div><div class="metric-foot">Example endpoint</div></div>
+      <div class="card"><div class="metric-label">Security gate</div><div class="metric-value" style="font-size:20px">Enabled</div><div class="metric-foot">Block on critical findings</div></div>
+      <div class="card"><div class="metric-label">Rollback</div><div class="metric-value" style="font-size:20px">Ready</div><div class="metric-foot">Restore last stable release</div></div>
+    </div>
+    <div class="card"><div class="section-head"><div><h2>How to turn this simulation into real DevOps</h2><p>Suggested implementation path</p></div></div><div class="risklist">
+      <div class="riskrow"><span>1. Put the app/API in a GitHub repository</span><strong>Git</strong></div>
+      <div class="riskrow"><span>2. Add unit tests for risk rules and API validation</span><strong>Pytest</strong></div>
+      <div class="riskrow"><span>3. Build a container image on each push</span><strong>Docker</strong></div>
+      <div class="riskrow"><span>4. Scan dependencies and the container image</span><strong>Trivy</strong></div>
+      <div class="riskrow"><span>5. Deploy to a test host and check /health</span><strong>CI/CD</strong></div>
+      <div class="riskrow"><span>6. Collect metrics and alert on failures</span><strong>Prometheus</strong></div>
+    </div></div>
+  </section>
+  <footer class="disclaimer">LoanFlow prototype • Version 1.0.0 • Offline, client-side demo • Not for real lending or payment decisions</footer>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+let apps=[
+ {ref:"LF-1024",name:"Aarav Shah",type:"Personal loan",amount:250000,score:18,status:"Eligible for review"},
+ {ref:"LF-1023",name:"Mira Patel",type:"Vehicle loan",amount:680000,score:42,status:"Manual review"},
+ {ref:"LF-1022",name:"Kabir Rao",type:"Personal loan",amount:150000,score:76,status:"Review required"},
+ {ref:"LF-1021",name:"Sana Khan",type:"Education loan",amount:400000,score:23,status:"Eligible for review"}
+];
+let transactions=[],activityItems=[
+ {icon:"✓",title:"Demo environment initialized",desc:"Sample applications loaded • just now"},
+ {icon:"⛨",title:"Risk rules are active",desc:"Eligibility and anomaly checks ready"},
+ {icon:"↗",title:"Last pipeline passed",desc:"Simulated deployment • 09:42 AM"}
+];
+const fmt=n=>new Intl.NumberFormat("en-IN",{style:"currency",currency:"INR",maximumFractionDigits:0}).format(Number(n)||0);
+const scoreClass=s=>s>=65?"red":s>=35?"amber":"green";
+const riskLabel=s=>s>=65?"High":s>=35?"Medium":"Low";
+function showToast(msg){let t=$("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400)}
+function showView(v){document.querySelectorAll(".view").forEach(x=>x.classList.toggle("active",x.id===v));document.querySelectorAll(".nav button").forEach(x=>x.classList.toggle("active",x.dataset.view===v));$("pageTitle").textContent=({overview:"Overview",applications:"Loan applications",fraud:"Fraud detection",devops:"DevOps pipeline"})[v];}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
+function addActivity(icon,title,desc){activityItems.unshift({icon,title,desc});activityItems=activityItems.slice(0,5);renderActivity()}
+function renderActivity(){$("activity").innerHTML=activityItems.map(a=>`<div class="activity-item"><div class="activity-icon">${a.icon}</div><div><strong>${a.title}</strong><p>${a.desc}</p></div></div>`).join("")}
+function renderApps(){
+ const rows=apps.map(a=>`<tr><td><strong>${escapeHtml(a.name)}</strong><div style="color:var(--muted);font-size:10px;margin-top:4px">${a.ref}</div></td><td>${fmt(a.amount)}</td><td><span class="pill ${scoreClass(a.score)}">${riskLabel(a.score)} · ${a.score}/100</span></td><td><span class="pill ${a.score>=65?"red":a.score>=35?"amber":"green"}">${escapeHtml(a.status)}</span></td></tr>`).slice(0,5).join("");
+ $("overviewRows").innerHTML=rows;
+ $("applicationRows").innerHTML=apps.map(a=>`<tr><td>${a.ref}</td><td>${escapeHtml(a.name)}</td><td>${escapeHtml(a.type)}</td><td>${fmt(a.amount)}</td><td><span class="pill ${scoreClass(a.score)}">${a.score}/100</span></td><td><span class="pill ${a.score>=65?"red":a.score>=35?"amber":"green"}">${escapeHtml(a.status)}</span></td></tr>`).join("");
+ $("mApps").textContent=128+Math.max(0,apps.length-4);
+ $("mFlags").textContent=9+apps.filter(a=>a.score>=65).length;
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function resetLoanForm(){$("loanForm").reset();$("applicant").value="";$("income").value=65000;$("loanAmount").value=300000;$("emi").value=8000;$("months").value=30;$("credit").value=740;$("loanResult").classList.remove("show")}
+function seedLoanExample(){$("applicant").value="Rohan Sample";$("income").value=32000;$("loanAmount").value=650000;$("emi").value=15000;$("employment").value="salaried";$("months").value=3;$("credit").value=590;$("identity").value="mismatch";$("duplicate").value="yes";showToast("Review case loaded")}
+$("loanForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const name=$("applicant").value.trim(),income=+$("income").value,amount=+$("loanAmount").value,emi=+$("emi").value,months=+$("months").value,credit=+$("credit").value,employment=$("employment").value,identity=$("identity").value,duplicate=$("duplicate").value,type=$("loanType").value;
+ if(!name||income<=0||amount<=0||emi<0||months<0||credit<300||credit>900){showToast("Please check the application fields");return}
+ let score=0,reasons=[];
+ const dti=income?emi/income:1;
+ if(dti>.6){score+=28;reasons.push("Existing EMI is over 60% of monthly income")}else if(dti>.4){score+=17;reasons.push("Existing EMI is over 40% of monthly income")}
+ if(credit<600){score+=28;reasons.push("Illustrative credit score is below 600")}else if(credit<650){score+=15;reasons.push("Illustrative credit score is below 650")}
+ if(months<6){score+=15;reasons.push("Income history is shorter than 6 months")}
+ if(employment==="student"){score+=18;reasons.push("No regular income indicated")}
+ if(identity==="mismatch"){score+=35;reasons.push("Document details mismatch: verification required")}else if(identity==="missing"){score+=18;reasons.push("Required document is missing")}
+ if(duplicate==="yes"){score+=28;reasons.push("Possible duplicate application detected")}
+ if(amount>income*12){score+=12;reasons.push("Requested amount is high relative to monthly income")}
+ score=Math.min(100,score);
+ let status,headline,cls;
+ if(identity==="mismatch"||duplicate==="yes"||score>=65){status="Manual review required";headline="Hold for human review";cls="red"}
+ else if(score>=35||dti>.4||credit<650||identity==="missing"){status="Additional checks required";headline="More checks needed";cls="amber"}
+ else {status="Eligible for review";headline="Preliminary checks passed";cls="green"}
+ const ref="LF-"+(1025+apps.length-4);
+ const a={ref,name,type,amount,score,status};apps.unshift(a);renderApps();
+ const reasonsHtml=reasons.length?reasons.map(r=>`<div class="riskrow"><span>⚠ ${escapeHtml(r)}</span></div>`).join(""):"<div class='riskrow'><span>✓ No configured risk flags triggered</span></div>";
+ $("loanResult").innerHTML=`<div style="display:flex;justify-content:space-between;align-items:start;gap:12px"><div><h3>${headline}</h3><p>Reference ${ref} · ${escapeHtml(name)}</p></div><span class="pill ${cls}">${score}/100 risk</span></div><div class="scorebar"><span style="width:${score}%;background:${score>=65?"var(--red)":score>=35?"var(--amber)":"var(--teal)"}"></span></div><p><strong>Debt-to-income:</strong> ${(dti*100).toFixed(1)}% · <strong>Recommendation:</strong> ${status}</p><div class="risklist">${reasonsHtml}</div><p style="margin-top:12px"><strong>Next step:</strong> ${score>=65?"Route to a trained reviewer and verify the flagged information.":score>=35?"Request any missing evidence and conduct a manual review.":"Proceed to the lender's normal verification and approval workflow."}</p>`;
+ $("loanResult").classList.add("show");addActivity("▤","Loan application assessed",`${ref} · ${status}`);showToast("Application assessed successfully");
+});
+function loadFraudExample(){$("txAmount").value=98500;$("txHour").value=2;$("txCount").value=8;$("txDevice").value="far";$("txMerchant").value="high";$("txCard").value="failed";showToast("Suspicious transaction example loaded")}
+function resetTx(){$("transactionForm").reset();$("txAmount").value=1800;$("txHour").value=14;$("txCount").value=1;$("txDevice").value="known";$("txMerchant").value="usual";$("txCard").value="ok";$("txScore").textContent="—";$("txMeter").style.width="0";$("txBadge").className="pill blue";$("txBadge").textContent="Awaiting analysis";$("txSummary").textContent="Submit a transaction to see risk signals.";$("txSignals").innerHTML=""}
+$("transactionForm").addEventListener("submit",e=>{
+ e.preventDefault();const amount=+$("txAmount").value,hour=+$("txHour").value,count=+$("txCount").value,device=$("txDevice").value,merchant=$("txMerchant").value,auth=$("txCard").value;
+ if(amount<=0||hour<0||hour>23||count<1){showToast("Please check transaction fields");return}
+ let score=0,signals=[];
+ if(amount>=50000){score+=25;signals.push(["Large transaction","Amount is unusually large for this demo's fixed threshold."])}else if(amount>=20000){score+=12;signals.push(["Elevated amount","Amount crossed the demo's elevated threshold."])}
+ if(hour<=4){score+=15;signals.push(["Unusual hour","Transaction occurred between midnight and 4 AM."])}
+ if(count>=6){score+=25;signals.push(["Transaction velocity","Many transactions in a short time window."])}else if(count>=3){score+=12;signals.push(["Elevated velocity","Several transactions in a short time window."])}
+ if(device==="far"){score+=30;signals.push(["Unusual location","Location pattern differs from the usual profile."])}else if(device==="new"){score+=15;signals.push(["New device","Device has not been seen before."])}
+ if(merchant==="high"){score+=20;signals.push(["Unusual merchant category","Merchant category differs from typical activity."])}else if(merchant==="new"){score+=8;signals.push(["First-time merchant","New merchant for this profile."])}
+ if(auth==="failed"){score+=25;signals.push(["Failed authentication","Repeated failed authentication attempts."])}else if(auth==="none"){score+=12;signals.push(["Authentication gap","Strong authentication signal unavailable."])}
+ score=Math.min(100,score);const level=score>=65?"High":score>=35?"Medium":"Low",cls=score>=65?"red":score>=35?"amber":"green";
+ $("txScore").textContent=score+"/100";$("txMeter").style.width=score+"%";$("txMeter").style.background=score>=65?"var(--red)":score>=35?"var(--amber)":"var(--teal)";$("txBadge").className="pill "+cls;$("txBadge").textContent=level+" risk";$("txSummary").textContent=score>=65?"Recommend urgent review; apply bank-approved controls only.":score>=35?"Recommend step-up verification or review according to policy.":"No major demo rule triggered; continue normal controls.";
+ $("txSignals").innerHTML=signals.length?signals.map(s=>`<div class="signal"><span>⚑</span><div><b>${escapeHtml(s[0])}</b>${escapeHtml(s[1])}</div></div>`).join(""):`<div class="signal"><span>✓</span><div><b>No major signals</b>Configured demo rules did not flag this transaction.</div></div>`;
+ const ref="TX-"+String(5001+transactions.length),item={ref,amount,score,signals:signals.map(s=>s[0]),level};transactions.unshift(item);renderTxRows();addActivity("◈","Transaction analyzed",`${ref} · ${level} risk · score ${score}`);showToast("Transaction analysis complete");
+});
+function renderTxRows(){$("txRows").innerHTML=transactions.length?transactions.slice(0,10).map(t=>`<tr><td>${t.ref}</td><td>${fmt(t.amount)}</td><td><span class="pill ${scoreClass(t.score)}">${t.score}/100</span></td><td>${escapeHtml(t.signals.slice(0,2).join(", ")||"No major signals")}</td><td><span class="pill ${t.score>=65?"red":t.score>=35?"amber":"green"}">${t.score>=65?"Investigate":t.score>=35?"Review":"Monitor"}</span></td></tr>`).join(""):`<tr><td colspan="5" class="empty">No transactions analyzed yet. Try a sample above.</td></tr>`}
+let pipelineRunning=false;
+function clearLogs(){$("logs").textContent="[system] Logs cleared. Click “Run pipeline” to begin a demo run."}
+function logLine(text,cls=""){const el=$("logs");el.innerHTML+=(el.textContent?"\n":"")+`<span class="${cls}">${escapeHtml(text)}</span>`;el.scrollTop=el.scrollHeight}
+async function runPipeline(){
+ if(pipelineRunning)return;pipelineRunning=true;$("runPipeline").disabled=true;$("runPipeline").textContent="Running…";$("logs").innerHTML="";
+ const stages=[["Source checkout","Fetching repository at commit 8b31f2a…"],["Automated tests","Running unit tests and API contract tests…"],["Security scan","Scanning dependencies and container image…"],["Build image","Building immutable Docker image…"],["Deploy + health","Deploying to demo environment and checking /health…"]];
+ document.querySelectorAll(".stage").forEach(s=>{s.className="stage"});
+ logLine("[pipeline] Starting LoanFlow CI/CD run");
+ for(let i=0;i<stages.length;i++){
+   const el=$("stage"+i);el.classList.add("running");logLine(`[${i+1}/5] ${stages[i][1]}`);await new Promise(r=>setTimeout(r,650));
+   if(i===2 && Math.random()<.12){el.className="stage fail";logLine("[security] Critical vulnerability found. Deployment blocked; last stable version retained.","logbad");logLine("[pipeline] FAILED safely. Review findings and rerun.");pipelineRunning=false;$("runPipeline").disabled=false;$("runPipeline").textContent="↻ Run again";addActivity("⚑","Pipeline blocked","Simulated security gate failed; stable version retained");return}
+   el.className="stage done";logLine(`[pass] ${stages[i][0]} complete`,"logok");
+ }
+ logLine("[health] /health returned 200 OK","logok");logLine("[pipeline] SUCCESS — demo deployment is healthy","logok");$("runPipeline").disabled=false;$("runPipeline").textContent="↻ Run again";pipelineRunning=false;addActivity("↗","CI/CD pipeline passed","Tests, scan, build and health check completed");showToast("Pipeline simulation passed");
+}
+renderApps();renderActivity();
+</script>
+</body>
+</html>
